@@ -126,6 +126,8 @@ var deps = {
             async.forEach(Object.keys(fileMap), function(x, next) {
                 download(rootHref + x, function(e, d) {
                     d = d.replace(/^\(function.*{[^{}]+^}[^{}]+{/m, "define(function(require, exports, module) {");
+                    d = d.replace(/^\s*return vimApi;\s*};/gm, "  //};")
+                        .replace("var Vim = function() {", "$& return vimApi; } //{")
                     fs.writeFile(rootDir + fileMap[x], d, next)
                 })
             }, function() {

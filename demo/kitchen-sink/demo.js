@@ -83,7 +83,7 @@ var workerModule = require("ace/worker/worker_client");
 if (location.href.indexOf("noworker") !== -1) {
     workerModule.WorkerClient = workerModule.UIWorkerClient;
 }
-
+localStorage.keybinding = "vim2"
 /*********** create editor ***************************/
 var container = document.getElementById("editor-container");
 
